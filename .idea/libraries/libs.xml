@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/batch.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-exec-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ejml-0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gson-2.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/java-diff-utils-1.3.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/java-getopt-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javacpp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javacv.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javailp-1.2a.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jsapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/junit-4.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/LIUM_SpkDiarization-8.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mp3plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mysql.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/sphinx4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xstream-1.4.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/java-getopt-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/LIUM_SpkDiarization-8.4.jar!/" />
+    </SOURCES>
+  </library>
+</component>
