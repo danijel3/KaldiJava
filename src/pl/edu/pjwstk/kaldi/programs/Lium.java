@@ -10,6 +10,8 @@ import java.util.Locale;
 import pl.edu.pjwstk.kaldi.files.TextGrid;
 import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
+
+/*
 import fr.lium.spkDiarization.programs.MClust;
 import fr.lium.spkDiarization.programs.MDecode;
 import fr.lium.spkDiarization.programs.MSeg;
@@ -17,6 +19,13 @@ import fr.lium.spkDiarization.programs.MSegInit;
 import fr.lium.spkDiarization.programs.MTrainEM;
 import fr.lium.spkDiarization.programs.MTrainInit;
 import fr.lium.spkDiarization.tools.SAdjSeg;
+*/
+
+/**
+ * THIS FILE IS COMMENTED OUT
+ * Lium is lincensed under GPL, so we cannot include it in this project directly.
+ * The file will remain commented for now until we figure out how to resolve this issue...
+ */
 
 public class Lium {
 
@@ -44,6 +53,9 @@ public class Lium {
 
 	public static void diarize(File input) {
 
+		throw new RuntimeException("LIUM is disabled in this version!");
+
+		/*
 		File uem = new File(Settings.curr_task_dir, "show.uem.seg");
 		File iseg = new File(Settings.curr_task_dir, "show.i.seg");
 		// File pmsseg = new File(Settings.curr_task_dir, "show.pms.seg");
@@ -222,6 +234,7 @@ public class Lium {
 		} catch (Exception e) {
 			Log.error("LIUM diarization", e);
 		}
+		*/
 	}
 
 	public static void main(String[] args) {
