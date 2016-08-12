@@ -2,16 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17812522-f24d-4738-b967-92db25e9f26d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/libs.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_java_diff_utils_diffutils_1_3_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_exec_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/ExperimentMain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/KaldiMain.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/CTM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/ClarinText.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/Converter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/EAF.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/LAB.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/RTTM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/Segmentation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/SegmentationList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/TextGrid.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/AlignedSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/ConfidenceNetwork.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/Dictionary.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/JuliusOutput.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/LatticeNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/MLF.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/WordGraph.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/WordList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/julius/WordSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Akt.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Grammar.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Numbers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Essentia.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/FFMPEG.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Java.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Julius.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiKWS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiScripts.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Kill.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Lium.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/NGram.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Praat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Python.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Shout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Sox.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Transcriber.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/chmod.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/ServiceDaemon.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/ServiceTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/database/Database.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/database/dbTasks.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/AlignTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/ConvertEncodingTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/DecodeFMLLRTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/DecodeTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/KeywordSpottingTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/NSERTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/ParallelTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/SpeakerDiarizationTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/Task.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/TestTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Diff.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/FileUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Log.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/ParseOptions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/PasswordObfuscator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Settings.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/WAV.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KaldiJava.iml" afterPath="$PROJECT_DIR$/KaldiJava.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Lium.java" afterPath="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Lium.java" />
     </list>
     <ignored path="KJExperimenting.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +83,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -28,18 +91,7 @@
     <favorites_list name="KJExperimenting" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ExperimentMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/ExperimentMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -82,6 +134,8 @@
         <option value="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java" />
         <option value="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/ExperimentMain.java" />
         <option value="$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Lium.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java" />
       </list>
     </option>
   </component>
@@ -97,14 +151,19 @@
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="36" />
-    <option name="width" value="1916" />
-    <option name="height" value="1044" />
+    <option name="x" value="1917" />
+    <option name="width" value="1926" />
+    <option name="height" value="1083" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -131,6 +190,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -140,34 +201,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KJExperimenting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KaldiJava" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/xstream-1.4.4.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -195,43 +245,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -253,6 +266,9 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -302,22 +318,6 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -411,21 +411,12 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -442,19 +433,6 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="false" name="TestMain" type="Application" factoryName="Application">
@@ -513,11 +491,12 @@
       <workItem from="1465480180432" duration="13000" />
       <workItem from="1465480212060" duration="5781000" />
       <workItem from="1465745896004" duration="877000" />
+      <workItem from="1470984801217" duration="1840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125173000" />
+    <option name="totallyTimeSpent" value="127013000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -529,34 +508,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="36" width="1916" height="1044" extended-state="4" />
+    <frame x="1917" y="0" width="1926" height="1083" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3278856" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946466" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24791667" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946466" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -581,112 +561,105 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Transcriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="62" column="58" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/ExperimentMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/ExperimentMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/CTM.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/files/CTM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="325" column="16" selection-start-line="325" selection-start-column="16" selection-end-line="325" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Julius.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Julius.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/NGram.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/NGram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Python.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Python.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Shout.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Shout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Transcriber.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Transcriber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="62" column="58" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/ClarinText.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/files/ClarinText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="29" column="15" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/ServiceTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/ServiceTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/files/CTM.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/files/CTM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Julius.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Julius.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Shout.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Shout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Python.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Python.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
@@ -694,7 +667,7 @@
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.8.0_31/src.zip!/java/io/FileNotFoundException.java" />
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Transcriber.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Transcriber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="62" column="58" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
@@ -702,7 +675,7 @@
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.8.0_31/src.zip!/java/io/FileOutputStream.java" />
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/NGram.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/NGram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
@@ -712,7 +685,7 @@
     <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/TestMain.java" />
     <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/OpenFST.java" />
     <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/res/numbers.properties" />
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Settings.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-210">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
@@ -720,28 +693,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Linear.java" />
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Log.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/Log.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="172" column="28" selection-start-line="172" selection-start-column="28" selection-end-line="172" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Essentia.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Essentia.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Praat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Praat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Sox.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Sox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
@@ -749,28 +722,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/chmod.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/chmod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/FFMPEG.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/FFMPEG.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Java.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Java.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiKWS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/KaldiKWS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
@@ -778,35 +751,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/database/dbTasks.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/database/dbTasks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/DecodeTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/tasks/DecodeTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-345">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/NSERTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/tasks/NSERTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/WAV.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/WAV.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1200">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
@@ -814,7 +780,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/KaldiMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/KaldiMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="71" column="73" selection-start-line="71" selection-start-column="73" selection-end-line="71" selection-end-column="73" />
@@ -822,7 +788,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/FileUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/FileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1968">
           <caret line="548" column="23" selection-start-line="548" selection-start-column="23" selection-end-line="548" selection-end-column="23" />
@@ -830,7 +796,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Akt.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/grammars/Akt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
@@ -838,17 +804,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Grammar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/grammars/Grammar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
@@ -856,7 +812,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/grammars/Numbers.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/grammars/Numbers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="42" column="31" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="31" />
@@ -864,7 +820,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/KaldiScripts.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/KaldiScripts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6810">
           <caret line="469" column="0" selection-start-line="469" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
@@ -874,38 +830,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="36" column="34" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="34" />
-          <folding>
-            <element signature="e#1454#1455#0" expanded="false" />
-            <element signature="e#1477#1478#0" expanded="false" />
-            <element signature="e#1528#1529#0" expanded="false" />
-            <element signature="e#1551#1552#0" expanded="false" />
-            <element signature="e#1708#1709#0" expanded="false" />
-            <element signature="e#1744#1745#0" expanded="false" />
-            <element signature="e#1802#1803#0" expanded="false" />
-            <element signature="e#1845#1846#0" expanded="false" />
-            <element signature="e#1892#1893#0" expanded="false" />
-            <element signature="e#1917#1918#0" expanded="false" />
-            <element signature="e#3170#3171#0" expanded="false" />
-            <element signature="e#3190#3191#0" expanded="false" />
-            <element signature="e#3221#3222#0" expanded="false" />
-            <element signature="e#3242#3243#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/KaldiJava.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/service/tasks/SpeakerDiarizationTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/tasks/SpeakerDiarizationTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1288">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
@@ -913,29 +845,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/programs/Lium.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/Lium.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/utils/Diff.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/Diff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        <state relative-caret-position="234">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pl/edu/pjwstk/kaldi/ExperimentMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/utils/ProgramLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="2304">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/service/database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1470984794199" expanded="true" signature="1360:1440" ph="SELECT missi... missingValue" />
+            <marker date="1470984794199" expanded="true" signature="3898:4018" ph="UPDATE `miss... " />
+            <marker date="1470984794199" expanded="true" signature="4239:4357" ph="UPDATE `miss... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/programs/KaldiUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="163" column="50" selection-start-line="163" selection-start-column="50" selection-end-line="163" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#41793#41801#0" expanded="false" />
+            <element signature="e#42881#42889#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pjwstk/kaldi/ExperimentMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-738">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2970#2978#0" expanded="false" />
+            <element signature="e#3119#3127#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -996,7 +975,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1016,7 +994,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.apache.commons:commons-exec:1.1</last-edited>
+          <last-edited>Maven: org.apache.commons:commons-exec:1.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
