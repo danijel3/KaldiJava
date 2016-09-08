@@ -1,21 +1,18 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.StringJoiner;
-import java.util.Vector;
-
 import pl.edu.pjwstk.kaldi.files.CTM;
 import pl.edu.pjwstk.kaldi.files.Segmentation;
 import pl.edu.pjwstk.kaldi.files.SegmentationList;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
 import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class KaldiScripts {
 
@@ -146,7 +143,7 @@ public class KaldiScripts {
 
         FileUtils.makeVocab(txt, v_temp);
 
-        Vector<String> lines = new Vector<String>();
+        Vector<String> lines = new Vector<>();
         lines.add("<UNK>");
         lines.add("SIL");
 
@@ -354,7 +351,7 @@ public class KaldiScripts {
         File temp5 = File.createTempFile("arpafst", ".tmp", input.getParentFile());
         File temp6 = File.createTempFile("arpafst", ".tmp", input.getParentFile());
 
-        ArrayList<String> lines = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<>();
         lines.add("<s> <s>");
         lines.add("</s> <s>");
         lines.add("</s> </s>");

@@ -5,40 +5,37 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-/**
- * Created by guest on 5/23/16.
- */
-
 public class Grammar {
 
     static class Arc {
-        public int from,to,id;
+        public int from, to, id;
+
         public Arc(int from, int to, int id) {
-            this.from=from;
-            this.to=to;
-            this.id=id;
+            this.from = from;
+            this.to = to;
+            this.id = id;
         }
     }
 
-    static Map<String,Integer> eps_map;
+    static Map<String, Integer> eps_map;
     static List<String> eps_list;
+
     static {
-        eps_map=new TreeMap<String,Integer>();
-        eps_map.put("<eps>",0);
-        eps_list=new LinkedList<String>();
+        eps_map = new TreeMap<>();
+        eps_map.put("<eps>", 0);
+        eps_list = new LinkedList<>();
         eps_list.add("<eps>");
 
     }
 
-    List<Arc> arcs=new LinkedList<Arc>();
-    int node_count=1;
-    Set<Integer> end_nodes=new HashSet<Integer>();
-    Map<String,Integer> word_map=new HashMap<String,Integer>(eps_map);
-    List<String> word_list=new ArrayList<String>(eps_list);
+    List<Arc> arcs = new LinkedList<>();
+    int node_count = 1;
+    Set<Integer> end_nodes = new HashSet<>();
+    Map<String, Integer> word_map = new HashMap<>(eps_map);
+    List<String> word_list = new ArrayList<>(eps_list);
 
-    public int getLastNode()
-    {
-        return node_count-1;
+    public int getLastNode() {
+        return node_count - 1;
     }
 
     public void copySymbols(Grammar other) {
@@ -46,136 +43,134 @@ public class Grammar {
         word_list.addAll(other.word_list);
     }
 
-    private int getWordID(String word)
-    {
-        if(word_map.containsKey(word))
+    private int getWordID(String word) {
+        if (word_map.containsKey(word))
             return word_map.get(word);
         else {
             word_list.add(word);
-            word_map.put(word,word_list.size()-1);
-            return word_list.size()-1;
+            word_map.put(word, word_list.size() - 1);
+            return word_list.size() - 1;
         }
     }
 
     public void setWord(String word) {
 
-        assert(arcs.isEmpty());
+        assert (arcs.isEmpty());
 
-        int wid=getWordID(word);
-        arcs.add(new Arc(0,1,wid));
+        int wid = getWordID(word);
+        arcs.add(new Arc(0, 1, wid));
         end_nodes.add(1);
-        node_count=2;
+        node_count = 2;
     }
 
     public void setWordList(List<String> words) {
 
-        assert(arcs.isEmpty());
+        assert (arcs.isEmpty());
 
-        for (String word:words) {
-            int wid=getWordID(word);
-            arcs.add(new Arc(0,1,wid));
+        for (String word : words) {
+            int wid = getWordID(word);
+            arcs.add(new Arc(0, 1, wid));
         }
         end_nodes.add(1);
-        node_count=2;
+        node_count = 2;
     }
 
     public void setWordSequence(List<String> words) {
 
-        assert(arcs.isEmpty());
+        assert (arcs.isEmpty());
 
-        int node=0;
-        for (String word:words) {
-            int wid=getWordID(word);
-            arcs.add(new Arc(node,node+1,wid));
+        int node = 0;
+        for (String word : words) {
+            int wid = getWordID(word);
+            arcs.add(new Arc(node, node + 1, wid));
             node++;
         }
         end_nodes.add(node);
-        node_count=node;
+        node_count = node;
     }
 
 
-    public Map<Integer,Integer> getWordListMapping(Grammar other) {
+    public Map<Integer, Integer> getWordListMapping(Grammar other) {
 
-        Map<Integer,Integer> ret=new TreeMap<Integer,Integer>();
-        int id=0;
-        for(String word:other.word_list) {
-            ret.put(id,getWordID(word));
+        Map<Integer, Integer> ret = new TreeMap<>();
+        int id = 0;
+        for (String word : other.word_list) {
+            ret.put(id, getWordID(word));
             id++;
         }
         return ret;
     }
 
     public void attach(Grammar other) {
-        attach(other,node_count-1);
+        attach(other, node_count - 1);
     }
 
     public void attach(Grammar other, int node) {
 
-        Map<Integer,Integer> id_map=getWordListMapping(other);
+        Map<Integer, Integer> id_map = getWordListMapping(other);
 
-        int offset=node_count-1;
+        int offset = node_count - 1;
 
-        for(Arc arc:other.arcs) {
-            int from=arc.from;
-            if(from==0)
-                from=node;
+        for (Arc arc : other.arcs) {
+            int from = arc.from;
+            if (from == 0)
+                from = node;
             else
-                from+=offset;
-            if(from>=node_count)
-                node_count=from+1;
+                from += offset;
+            if (from >= node_count)
+                node_count = from + 1;
 
-            int to=arc.to;
-            if(to==0)
-                to=node;
+            int to = arc.to;
+            if (to == 0)
+                to = node;
             else
-                to+=offset;
-            if(to>=node_count)
-                node_count=to+1;
+                to += offset;
+            if (to >= node_count)
+                node_count = to + 1;
 
-            int id=id_map.get(arc.id);
+            int id = id_map.get(arc.id);
 
-            arcs.add(new Arc(from,to,id));
+            arcs.add(new Arc(from, to, id));
         }
 
         end_nodes.remove(node);
 
-        for(Integer id:other.end_nodes)
-            end_nodes.add(id+offset);
+        for (Integer id : other.end_nodes)
+            end_nodes.add(id + offset);
     }
 
-    public void merge(Grammar other, Map<Integer,Integer> links)
-    {
-        Map<Integer,Integer> id_map=getWordListMapping(other);
+    public void merge(Grammar other, Map<Integer, Integer> links) {
+        Map<Integer, Integer> id_map = getWordListMapping(other);
 
-        int offset=node_count-1;
+        int offset = node_count - 1;
 
-        for(Arc arc:other.arcs) {
-            int from=arc.from;
-            if(links.containsKey(from))
-                from=links.get(from);
+        for (Arc arc : other.arcs) {
+            int from = arc.from;
+            if (links.containsKey(from))
+                from = links.get(from);
             else
-                from+=offset;
-            if(from>=node_count)
-                node_count=from+1;
+                from += offset;
+            if (from >= node_count)
+                node_count = from + 1;
 
-            int to=arc.to;
-            if(links.containsKey(to))
-                to=links.get(to);
+            int to = arc.to;
+            if (links.containsKey(to))
+                to = links.get(to);
             else
-                to+=offset;
-            if(to>=node_count)
-                node_count=to+1;
+                to += offset;
+            if (to >= node_count)
+                node_count = to + 1;
 
-            int id=id_map.get(arc.id);
+            int id = id_map.get(arc.id);
 
-            arcs.add(new Arc(from,to,id));
+            arcs.add(new Arc(from, to, id));
         }
 
-        for(Map.Entry<Integer,Integer> e:links.entrySet())
+        for (Map.Entry<Integer, Integer> e : links.entrySet())
             end_nodes.remove(e.getValue());
 
-        for(Integer id:other.end_nodes) {
-            if(links.containsKey(id))
+        for (Integer id : other.end_nodes) {
+            if (links.containsKey(id))
                 end_nodes.add(links.get(id));
             else
                 end_nodes.add(id + offset);
@@ -183,22 +178,20 @@ public class Grammar {
     }
 
     public Grammar clone() {
-        Grammar ret=new Grammar();
+        Grammar ret = new Grammar();
         ret.arcs.addAll(arcs);
-        ret.node_count=node_count;
+        ret.node_count = node_count;
         ret.end_nodes.addAll(end_nodes);
-        ret.word_map=new HashMap<String,Integer>(word_map);
-        ret.word_list=new ArrayList<String>(word_list);
+        ret.word_map = new HashMap<>(word_map);
+        ret.word_list = new ArrayList<>(word_list);
         return ret;
     }
 
-    public int fixend()
-    {
-        int end=node_count;
+    public int fixend() {
+        int end = node_count;
         node_count++;
-        for(Integer id:end_nodes)
-        {
-            arcs.add(new Arc(id,end,0));
+        for (Integer id : end_nodes) {
+            arcs.add(new Arc(id, end, 0));
         }
         end_nodes.clear();
         end_nodes.add(end);
@@ -210,18 +203,18 @@ public class Grammar {
 
         PrintWriter writer = new PrintWriter(fst);
 
-        for(Arc arc:arcs) {
-            String w=word_list.get(arc.id);
-            writer.println(arc.from+" "+arc.to+" "+w+" "+w);
+        for (Arc arc : arcs) {
+            String w = word_list.get(arc.id);
+            writer.println(arc.from + " " + arc.to + " " + w + " " + w);
         }
 
-        for(Integer id:end_nodes) {
+        for (Integer id : end_nodes) {
             writer.println(id);
         }
 
         writer.close();
 
-        if(wordlist!=null) {
+        if (wordlist != null) {
             writer = new PrintWriter(wordlist);
 
             int id = 0;

@@ -1,11 +1,11 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class NGram {
 

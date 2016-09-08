@@ -180,15 +180,14 @@ public class FileUtils {
     }
 
     public static void makeVocab(File input_file, File vocab_file) throws IOException {
-        HashSet<String> words = new HashSet<String>();
+        HashSet<String> words = new HashSet<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(input_file));
 
         String line;
         while ((line = reader.readLine()) != null) {
             String[] tok = line.split("\\s+");
-            for (String w : tok)
-                words.add(w);
+            Collections.addAll(words, tok);
         }
 
         reader.close();
@@ -238,7 +237,7 @@ public class FileUtils {
 
     public static void reverse(File input, File output) throws IOException {
 
-        LinkedList<String> words = new LinkedList<String>();
+        LinkedList<String> words = new LinkedList<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(input));
 
@@ -277,7 +276,7 @@ public class FileUtils {
     }
 
     public static void sort_uniq(File input, File output, String encoding) throws IOException {
-        HashSet<String> lines = new HashSet<String>();
+        HashSet<String> lines = new HashSet<>();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(input), encoding));
 
@@ -298,7 +297,7 @@ public class FileUtils {
     }
 
     public static Vector<String> readLines(File file, String encoding) throws IOException {
-        Vector<String> ret = new Vector<String>();
+        Vector<String> ret = new Vector<>();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding));
 
@@ -312,7 +311,7 @@ public class FileUtils {
     }
 
     public static Vector<String> readTokens(File file, String encoding) throws IOException {
-        Vector<String> ret = new Vector<String>();
+        Vector<String> ret = new Vector<>();
 
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding));
@@ -321,8 +320,7 @@ public class FileUtils {
             String line;
             while ((line = reader.readLine()) != null) {
                 String tok[] = line.split("\\s+");
-                for (String word : tok)
-                    ret.add(word);
+                Collections.addAll(ret, tok);
             }
 
         }
@@ -504,7 +502,7 @@ public class FileUtils {
     }
 
     public static Vector<String> get_ids_from_table(File table, String key_regex) throws IOException, NumberFormatException {
-        Vector<String> ret = new Vector<String>();
+        Vector<String> ret = new Vector<>();
 
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(table)));
@@ -579,7 +577,7 @@ public class FileUtils {
     }
 
     public static Vector<String> cut(File in, int field) throws IOException {
-        Vector<String> ret = new Vector<String>();
+        Vector<String> ret = new Vector<>();
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(in)));
         ) {

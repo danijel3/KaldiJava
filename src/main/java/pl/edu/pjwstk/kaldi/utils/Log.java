@@ -1,11 +1,6 @@
 package pl.edu.pjwstk.kaldi.utils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Handler;
@@ -169,17 +164,17 @@ public class Log {
             logger.setLevel(level);
     }
 
-    public static void  disableOutput() {
-        suppress_output=true;
+    public static void disableOutput() {
+        suppress_output = true;
     }
 
-    public static void  enableOutput() {
-        suppress_output=false;
+    public static void enableOutput() {
+        suppress_output = false;
     }
 
     public static void verbose(String message) {
 
-        if(suppress_output) return;
+        if (suppress_output) return;
 
         if (logger == null) {
             System.out.println("V:" + message);
@@ -191,7 +186,7 @@ public class Log {
 
     public static void info(String message) {
 
-        if(suppress_output) return;
+        if (suppress_output) return;
 
         if (logger == null) {
             System.out.println("I:" + message);
@@ -203,7 +198,7 @@ public class Log {
 
     public static void warn(String message) {
 
-        if(suppress_output) return;
+        if (suppress_output) return;
 
         if (logger == null) {
             System.out.println("W:" + message);
@@ -215,7 +210,7 @@ public class Log {
 
     public static void error(String message) {
 
-        if(suppress_output) return;
+        if (suppress_output) return;
 
         if (logger == null) {
             System.out.println("E:" + message);
@@ -227,7 +222,7 @@ public class Log {
 
     public static void error(String message, Throwable e) {
 
-        if(suppress_output) return;
+        if (suppress_output) return;
 
         if (logger == null) {
             System.out.println("E:" + message);

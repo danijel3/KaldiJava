@@ -1,15 +1,14 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import pl.edu.pjwstk.kaldi.utils.Log;
+import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
+import pl.edu.pjwstk.kaldi.utils.Settings;
+
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.Vector;
-
-import pl.edu.pjwstk.kaldi.utils.Log;
-import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
-import pl.edu.pjwstk.kaldi.utils.Settings;
 
 public class KaldiUtils {
 
@@ -144,7 +143,7 @@ public class KaldiUtils {
 
         prepare_lang = new File(utils_dir, "prepare_lang.sh");
 
-        fstlibs = new ArrayList<File>();
+        fstlibs = new ArrayList<>();
         fstlibs.add(fst_lib);
     }
 
@@ -631,7 +630,7 @@ public class KaldiUtils {
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
     }
 
-    public static enum FMLLRUpdateType {
+    public enum FMLLRUpdateType {
         full, diag, offset, none
     }
 
@@ -1001,7 +1000,7 @@ public class KaldiUtils {
     }
 
     public static int add_lex_disambig(boolean sil_probs, boolean pron_probs, File lex_in, File lex_out) {
-        Vector<String> cmd_vec = new Vector<String>();
+        Vector<String> cmd_vec = new Vector<>();
         cmd_vec.add(Settings.perl_bin.getAbsolutePath());
         cmd_vec.add(add_lex_disambig.getAbsolutePath());
         if (sil_probs)
@@ -1028,7 +1027,7 @@ public class KaldiUtils {
     }
 
     public static void make_lexicon_fst(boolean pron_prob, File lex, double silprob, String silphone, int ndisambig, File fst) throws FileNotFoundException {
-        Vector<String> cmd_vec = new Vector<String>();
+        Vector<String> cmd_vec = new Vector<>();
         cmd_vec.add(Settings.perl_bin.getAbsolutePath());
         cmd_vec.add(make_lexicon_fst.getAbsolutePath());
         if (pron_prob)
@@ -1111,10 +1110,7 @@ public class KaldiUtils {
         launcher.run();
         Log.verbose("Done.");
 
-        if (launcher.getReturnValue() == 0)
-            return true;
-        else
-            return false;
+        return launcher.getReturnValue() == 0;
     }
 
     public static void fstcomposecontext(int context_size, int central_position, File disamb_syms_in,

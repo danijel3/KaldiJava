@@ -5,69 +5,59 @@ import java.util.List;
 import java.util.Vector;
 
 public class ConfidenceNetwork {
-	
-	public static class Word
-	{
-		public String word;
-		public double weight;
-		public Object object; 
 
-		public Word(String word, double weight)
-		{
-			this.word=word;
-			this.weight=weight;
+    public static class Word {
+        public String word;
+        public double weight;
+        public Object object;
 
-			object=null;
-		}
+        public Word(String word, double weight) {
+            this.word = word;
+            this.weight = weight;
 
-		public String toString()
-		{
-			return word+":"+weight;
-		}
-	}
+            object = null;
+        }
 
-	public static class Section
-	{
-		public List<Word> words;
+        public String toString() {
+            return word + ":" + weight;
+        }
+    }
 
-		public Section()
-		{
-			words=new LinkedList<>();
-		}
+    public static class Section {
+        public List<Word> words;
 
-		public String toString()
-		{
-			String ret="";
+        public Section() {
+            words = new LinkedList<>();
+        }
 
-			for(Word w:words)
-			{
-				ret+="("+w+") ";
-			}
+        public String toString() {
+            String ret = "";
 
-			return ret;
-		}
-	}
-	
-	public Vector<Section> sections;
-	
-	public ConfidenceNetwork()
-	{
-		sections=new Vector<Section>();
-	}
-	
+            for (Word w : words) {
+                ret += "(" + w + ") ";
+            }
 
-	public double getAverageSectionWidth()
-	{
-		int ret=0;
-		int count=0;
-		
-		for(Section s:sections)
-		{
-			ret+=s.words.size();
-			count++;
-		}
-		
-		return ret/(double)count;
-	}
+            return ret;
+        }
+    }
+
+    public Vector<Section> sections;
+
+    public ConfidenceNetwork() {
+        sections = new Vector<>();
+    }
+
+
+    public double getAverageSectionWidth() {
+        int ret = 0;
+        int count = 0;
+
+        for (Section s : sections) {
+            ret += s.words.size();
+            count++;
+        }
+
+        return ret / (double) count;
+    }
 
 }

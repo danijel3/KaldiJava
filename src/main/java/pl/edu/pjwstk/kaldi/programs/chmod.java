@@ -1,20 +1,20 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import java.io.File;
-
 import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
+import java.io.File;
+
 public class chmod {
-	
-	public static void run(String mode, File file) {
 
-		String[] cmd = new String[] { "chmod", mode, file.getAbsolutePath() };
+    public static void run(String mode, File file) {
 
-		ProgramLauncher launcher = new ProgramLauncher(cmd);
+        String[] cmd = new String[]{"chmod", mode, file.getAbsolutePath()};
 
-		Log.verbose("chmod: " + mode + " " + file.getAbsolutePath());
-		launcher.run();
-		Log.verbose("Done.");
-	}
+        ProgramLauncher launcher = new ProgramLauncher(cmd);
+
+        Log.verbose("chmod: " + mode + " " + file.getAbsolutePath());
+        launcher.run();
+        Log.verbose("Done.");
+    }
 }

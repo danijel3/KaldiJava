@@ -5,15 +5,15 @@ import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
 public class Kill {
 
-	public static void kill(int pid) {
+    public static void kill(int pid) {
 
-		String[] cmd = { "kill", "-9", "" + pid };
+        String[] cmd = {"kill", "-9", "" + pid};
 
-		ProgramLauncher launcher = new ProgramLauncher(cmd);
+        ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-		Log.verbose("Killing process: " + pid);
-		launcher.run();
-		Log.verbose("Done.");
-	}
+        Log.verbose("Killing process: " + pid);
+        launcher.run();
+        Log.verbose("Done.");
+    }
 
 }

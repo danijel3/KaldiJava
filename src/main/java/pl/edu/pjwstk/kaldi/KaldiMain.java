@@ -1,5 +1,14 @@
 package pl.edu.pjwstk.kaldi;
 
+import pl.edu.pjwstk.kaldi.files.EAF;
+import pl.edu.pjwstk.kaldi.files.LAB;
+import pl.edu.pjwstk.kaldi.files.Segmentation;
+import pl.edu.pjwstk.kaldi.files.Segmentation.Segment;
+import pl.edu.pjwstk.kaldi.files.TextGrid;
+import pl.edu.pjwstk.kaldi.programs.*;
+import pl.edu.pjwstk.kaldi.utils.*;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,25 +16,6 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
-
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import pl.edu.pjwstk.kaldi.files.EAF;
-import pl.edu.pjwstk.kaldi.files.LAB;
-import pl.edu.pjwstk.kaldi.files.Segmentation;
-import pl.edu.pjwstk.kaldi.files.Segmentation.Segment;
-import pl.edu.pjwstk.kaldi.files.TextGrid;
-import pl.edu.pjwstk.kaldi.programs.KaldiScripts;
-import pl.edu.pjwstk.kaldi.programs.KaldiUtils;
-import pl.edu.pjwstk.kaldi.programs.NGram;
-import pl.edu.pjwstk.kaldi.programs.Shout;
-import pl.edu.pjwstk.kaldi.programs.Transcriber;
-import pl.edu.pjwstk.kaldi.utils.Diff;
-import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
-import pl.edu.pjwstk.kaldi.utils.ParseOptions;
-import pl.edu.pjwstk.kaldi.utils.Settings;
-import pl.edu.pjwstk.kaldi.utils.WAV;
 
 public class KaldiMain {
 

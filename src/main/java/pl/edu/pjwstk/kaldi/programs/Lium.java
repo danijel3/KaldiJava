@@ -1,15 +1,11 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.util.Locale;
-
-import pl.edu.pjwstk.kaldi.files.TextGrid;
 import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Locale;
 
 /*
 import fr.lium.spkDiarization.programs.MClust;
@@ -29,34 +25,34 @@ import fr.lium.spkDiarization.tools.SAdjSeg;
 
 public class Lium {
 
-	private static File gender_model = new File(Settings.lium_models,
-			"gender.gmms");
-	private static File sil_model = new File(Settings.lium_models, "s.gmms");
-	private static File silsp_model = new File(Settings.lium_models, "sms.gmms");
-	private static File ubm_model = new File(Settings.lium_models, "ubm.gmm");
+    private static File gender_model = new File(Settings.lium_models,
+            "gender.gmms");
+    private static File sil_model = new File(Settings.lium_models, "s.gmms");
+    private static File silsp_model = new File(Settings.lium_models, "sms.gmms");
+    private static File ubm_model = new File(Settings.lium_models, "ubm.gmm");
 
-	public static void test() throws FileNotFoundException {
+    public static void test() throws FileNotFoundException {
 
-		File[] list = new File[] { gender_model, sil_model, silsp_model,
-				ubm_model };
+        File[] list = new File[]{gender_model, sil_model, silsp_model,
+                ubm_model};
 
-		String missing = "";
-		for (File file : list) {
-			if (!file.exists())
-				missing += file.getAbsolutePath() + "\n";
-		}
+        String missing = "";
+        for (File file : list) {
+            if (!file.exists())
+                missing += file.getAbsolutePath() + "\n";
+        }
 
-		if (!missing.isEmpty())
-			throw new FileNotFoundException(missing);
+        if (!missing.isEmpty())
+            throw new FileNotFoundException(missing);
 
-	}
+    }
 
-	public static void diarize(File input) {
+    public static void diarize(File input) {
 
-		throw new RuntimeException("LIUM is disabled in this version!");
+        throw new RuntimeException("LIUM is disabled in this version!");
 
 		/*
-		File uem = new File(Settings.curr_task_dir, "show.uem.seg");
+        File uem = new File(Settings.curr_task_dir, "show.uem.seg");
 		File iseg = new File(Settings.curr_task_dir, "show.i.seg");
 		// File pmsseg = new File(Settings.curr_task_dir, "show.pms.seg");
 		File sseg = new File(Settings.curr_task_dir, "show.s.seg");
@@ -235,23 +231,23 @@ public class Lium {
 			Log.error("LIUM diarization", e);
 		}
 		*/
-	}
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		try {
+        try {
 
-			Locale.setDefault(Locale.ENGLISH);
+            Locale.setDefault(Locale.ENGLISH);
 
-			Log.init("KaldiJava", true);
+            Log.init("KaldiJava", true);
 
-			Settings.curr_task_dir = new File("/home/guest/Desktop/tmp/");
+            Settings.curr_task_dir = new File("/home/guest/Desktop/tmp/");
 
-			diarize(new File("/home/guest/Desktop/chain.wav"));
+            diarize(new File("/home/guest/Desktop/chain.wav"));
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
