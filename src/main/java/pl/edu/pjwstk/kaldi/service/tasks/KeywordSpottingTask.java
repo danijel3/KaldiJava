@@ -1,12 +1,14 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.files.TextGrid;
+import pl.edu.pjwstk.kaldi.programs.Julius;
 import pl.edu.pjwstk.kaldi.programs.KaldiKWS;
 import pl.edu.pjwstk.kaldi.programs.KaldiUtils;
 import pl.edu.pjwstk.kaldi.programs.Transcriber;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.xpath.XPath;
@@ -19,6 +21,8 @@ import java.security.MessageDigest;
 import java.util.Vector;
 
 public class KeywordSpottingTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
 
     private File input_keywords;
     private File words_table;
@@ -40,8 +44,8 @@ public class KeywordSpottingTask extends Task {
             File tg_out = new File(Settings.curr_task_dir, "out.TextGrid");
 
             if (!lattice.canRead()) {
-                Log.error("Cannot read lattice for task: " + Settings.curr_task_dir);
-                Log.error("Keyword spotting HAS to be run after decoding the file first!");
+                logger.error("Cannot read lattice for task: " + Settings.curr_task_dir);
+                logger.error("Keyword spotting HAS to be run after decoding the file first!");
                 state = State.FAILED;
                 return;
             }
@@ -67,7 +71,7 @@ public class KeywordSpottingTask extends Task {
             state = State.SUCCEEDED;
 
         } catch (Exception e) {
-            Log.error("KWS task.", e);
+            logger.error("KWS task.", e);
             state = State.FAILED;
         }
 

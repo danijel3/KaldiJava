@@ -1,12 +1,14 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
 import java.io.File;
 import java.util.List;
 
 public class Java {
+    private final static Logger logger = LoggerFactory.getLogger(Java.class);
 
     private static String sep = ":";
 
@@ -31,9 +33,9 @@ public class Java {
         launcher.setSuppressOutput(true);
         launcher.setAsynchronous(async);
 
-        Log.verbose("Running Java: " + class_name);
+        logger.trace("Running Java: " + class_name);
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
 }

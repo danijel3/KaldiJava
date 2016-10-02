@@ -1,9 +1,13 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
 public class Kill {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
+
 
     public static void kill(int pid) {
 
@@ -11,9 +15,9 @@ public class Kill {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("Killing process: " + pid);
+        logger.trace("Killing process: " + pid);
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
 }

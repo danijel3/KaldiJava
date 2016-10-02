@@ -1,9 +1,10 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.KaldiMain;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 
 public class AlignTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(AlignTask.class);
 
     private File input_audio;
     private File input_text;
@@ -36,7 +39,7 @@ public class AlignTask extends Task {
             state = State.SUCCEEDED;
 
         } catch (IOException | UnsupportedAudioFileException e) {
-            Log.error("Decoding task.", e);
+            logger.error("Decoding task.", e);
             state = State.FAILED;
         }
 

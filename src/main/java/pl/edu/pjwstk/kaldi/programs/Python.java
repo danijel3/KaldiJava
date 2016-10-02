@@ -1,12 +1,18 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import java.io.File;
 
 public class Python {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
+    private final static LogStream logger_stdout = new LogStream(logger);
+    private final static LogStream logger_stderr = new LogStream(logger, "ERR>> ");
 
     public static void run(File script, String[] args) {
 
@@ -20,11 +26,11 @@ public class Python {
         }
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("Running python script: " + script.getName());
+        logger.trace("Running python script: " + script.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 }

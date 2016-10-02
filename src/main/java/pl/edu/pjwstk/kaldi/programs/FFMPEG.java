@@ -1,12 +1,16 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.KaldiMain;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import java.io.File;
 
 public class FFMPEG {
+    private final static Logger logger = LoggerFactory.getLogger(FFMPEG.class);
+
 
     public static void convertTo16k(File input, File output) {
 
@@ -16,10 +20,10 @@ public class FFMPEG {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("FFMPEG: " + input.getAbsolutePath() + " -> "
+        logger.trace("FFMPEG: " + input.getAbsolutePath() + " -> "
                 + output.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("FFMPEG Retval: " + launcher.getReturnValue());

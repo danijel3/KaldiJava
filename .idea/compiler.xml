@@ -25,5 +25,8 @@
         <module name="KaldiJava" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="KaldiJava" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

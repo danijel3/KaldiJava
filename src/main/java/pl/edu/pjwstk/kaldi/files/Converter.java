@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.kaldi.files;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.ParseOptions;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -9,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.Locale;
 
 public class Converter {
+
+    private final static Logger logger = LoggerFactory.getLogger(Converter.class);
 
     public enum Format {
         CTM, EAF, LAB, RTTM, TextGrid
@@ -46,12 +49,6 @@ public class Converter {
         if (!po.parse(args))
             return;
 
-        try {
-            Log.init("Converter", true);
-        } catch (SecurityException | FileNotFoundException e1) {
-            e1.printStackTrace();
-            return;
-        }
 
         try {
 
@@ -97,7 +94,7 @@ public class Converter {
                 }
             }
 
-            Log.info("Converting " + from_file.getName() + " ["
+            logger.info("Converting " + from_file.getName() + " ["
                     + from_fmt.name() + "] -> " + to_file.getName() + " ["
                     + to_fmt.name() + "] t=" + timebase);
 
@@ -114,7 +111,7 @@ public class Converter {
             to_seg.write(to_file);
 
         } catch (Exception e) {
-            Log.error("Main error", e);
+            logger.error("Main error", e);
         }
 
     }

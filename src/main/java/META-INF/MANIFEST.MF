@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: diffutils-1.3.0.jar commons-exec-1.3.jar
+

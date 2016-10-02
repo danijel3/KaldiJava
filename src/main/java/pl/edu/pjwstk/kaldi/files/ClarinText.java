@@ -1,9 +1,10 @@
 package pl.edu.pjwstk.kaldi.files;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.files.Segmentation.Segment;
-import pl.edu.pjwstk.kaldi.utils.Log;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,6 +20,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClarinText {
+
+    private final static Logger logger = LoggerFactory.getLogger(ClarinText.class);
 
     public class ClarinPhoneme {
         String phoneme;
@@ -150,7 +153,7 @@ public class ClarinText {
                 break;
 
             while (i < words.length && !w.name.equals(words[i].word)) {
-                Log.warn("Deletion! Fixing...");
+                logger.warn("Deletion! Fixing...");
                 i++;
             }
 

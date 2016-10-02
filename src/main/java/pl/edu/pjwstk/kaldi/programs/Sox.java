@@ -1,11 +1,14 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
 import java.io.File;
 
 public class Sox {
+
+    private final static Logger logger = LoggerFactory.getLogger(Sox.class);
 
     public static void convert(File src_file, File dest_file) {
 
@@ -15,9 +18,9 @@ public class Sox {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("Coverting using SoX...");
+        logger.trace("Coverting using SoX...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -32,9 +35,9 @@ public class Sox {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("Extracting using SoX...");
+        logger.trace("Extracting using SoX...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 }

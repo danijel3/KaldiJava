@@ -1,10 +1,15 @@
 package pl.edu.pjwstk.kaldi.files;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.KaldiMain;
 
 import java.io.*;
 
 public class RTTM extends Segmentation {
+
+    private final static Logger logger = LoggerFactory.getLogger(RTTM.class);
+
 
     private double timebase = 1;
 
@@ -45,7 +50,7 @@ public class RTTM extends Segmentation {
 
         if (!tiers.isEmpty()) {
             if (tiers.size() > 1) {
-                Log.warn("RTTM saving only first tier!");
+                logger.warn("RTTM saving only first tier!");
             }
 
             Tier tier = tiers.get(0);

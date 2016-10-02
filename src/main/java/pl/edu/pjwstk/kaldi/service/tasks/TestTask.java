@@ -1,7 +1,8 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.xpath.XPath;
@@ -14,6 +15,8 @@ import java.security.MessageDigest;
 
 public class TestTask extends Task {
 
+    private final static Logger logger = LoggerFactory.getLogger(TestTask.class);
+
     private File input;
     private String output_name;
 
@@ -21,7 +24,7 @@ public class TestTask extends Task {
     public void run() {
 
         state = State.RUNNING;
-        Log.info("Starting test task...");
+        logger.info("Starting test task...");
 
         try {
 
@@ -30,12 +33,12 @@ public class TestTask extends Task {
             Files.copy(input.toPath(), output.toPath());
 
         } catch (Exception e) {
-            Log.error("Running Test Task", e);
+            logger.error("Running Test Task", e);
             state = State.FAILED;
             return;
         }
 
-        Log.info("Completed succesfully!");
+        logger.info("Completed succesfully!");
         state = State.SUCCEEDED;
     }
 

@@ -1,11 +1,16 @@
 package pl.edu.pjwstk.kaldi.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileUtils {
+
+    private final static Logger logger = LoggerFactory.getLogger(FileUtils.class);
 
     /**
      * Convert encoding of files.
@@ -212,13 +217,13 @@ public class FileUtils {
         if (max_depth < 0)
             return;
 
-        Log.verbose("Cleaning up " + dir.getName() + " dir...");
+        logger.trace("Cleaning up " + dir.getName() + " dir...");
 
         for (File file : dir.listFiles()) {
             boolean skip = false;
             for (File exc : exclude) {
                 if (file.getAbsolutePath().equals(exc.getAbsolutePath())) {
-                    Log.verbose("Skipping " + file.getName());
+                    logger.trace("Skipping " + file.getName());
                     skip = true;
                     break;
                 }
@@ -229,7 +234,7 @@ public class FileUtils {
                 if (file.isDirectory())
                     cleanup(file, exclude, max_depth - 1);
 
-                Log.verbose("Deleting " + file.getName());
+                logger.trace("Deleting " + file.getName());
                 file.delete();
             }
         }
@@ -314,7 +319,7 @@ public class FileUtils {
         Vector<String> ret = new Vector<>();
 
         try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding))
         ) {
 
             String line;
@@ -399,7 +404,7 @@ public class FileUtils {
 
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(lex_in)));
-                PrintWriter writer = new PrintWriter(lex_out);
+                PrintWriter writer = new PrintWriter(lex_out)
         ) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -412,7 +417,7 @@ public class FileUtils {
     public static void add_besi_to_lexicon(File lex_in, File lex_out) throws IOException {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(lex_in)));
-                PrintWriter writer = new PrintWriter(lex_out);
+                PrintWriter writer = new PrintWriter(lex_out)
         ) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -439,7 +444,7 @@ public class FileUtils {
     public static void make_words_list(File vocab, File words) throws IOException {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(vocab)));
-                PrintWriter writer = new PrintWriter(words);
+                PrintWriter writer = new PrintWriter(words)
         ) {
             writer.println("<eps> 0");
             int cnt = 1;
@@ -459,7 +464,7 @@ public class FileUtils {
         try (
                 BufferedReader silreader = new BufferedReader(new InputStreamReader(new FileInputStream(silence_phones)));
                 BufferedReader nonsilreader = new BufferedReader(new InputStreamReader(new FileInputStream(nonsilence_phones)));
-                PrintWriter writer = new PrintWriter(phones);
+                PrintWriter writer = new PrintWriter(phones)
         ) {
             writer.println("<eps> 0");
             int cnt = 1;
@@ -488,7 +493,7 @@ public class FileUtils {
 
     public static int get_id_from_table(File table, String key) throws IOException, NumberFormatException {
         try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(table)));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(table)))
         ) {
             key = key.trim();
             String line;
@@ -505,7 +510,7 @@ public class FileUtils {
         Vector<String> ret = new Vector<>();
 
         try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(table)));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(table)))
         ) {
             String line;
             while ((line = reader.readLine()) != null)
@@ -520,7 +525,7 @@ public class FileUtils {
     public static void convert_besi_to_desc(File besi, File desc) throws IOException {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(besi)));
-                PrintWriter writer = new PrintWriter(desc);
+                PrintWriter writer = new PrintWriter(desc)
         ) {
 
             String line;
@@ -547,7 +552,7 @@ public class FileUtils {
     public static void getSymsFromList(File syms, File out, Set<String> skip) throws IOException {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(syms)));
-                PrintWriter writer = new PrintWriter(out);
+                PrintWriter writer = new PrintWriter(out)
         ) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -563,7 +568,7 @@ public class FileUtils {
     public static void tail(File in, File out, int skip_num) throws IOException {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(in)));
-                PrintWriter writer = new PrintWriter(out);
+                PrintWriter writer = new PrintWriter(out)
         ) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -579,7 +584,7 @@ public class FileUtils {
     public static Vector<String> cut(File in, int field) throws IOException {
         Vector<String> ret = new Vector<>();
         try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(in)));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(in)))
         ) {
             String line;
             while ((line = reader.readLine()) != null) {

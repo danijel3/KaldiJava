@@ -2,6 +2,8 @@ package pl.edu.pjwstk.kaldi.utils;
 
 import org.apache.commons.exec.*;
 import org.apache.commons.exec.environment.EnvironmentUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ProgramLauncher implements Runnable {
+
+    private final static Logger logger = LoggerFactory.getLogger(ProgramLauncher.class);
 
     private CommandLine cmd;
     private DefaultExecutor exec = new DefaultExecutor();
@@ -117,7 +121,7 @@ public class ProgramLauncher implements Runnable {
         } catch (ExecuteException e) {
             // ignore
         } catch (Exception e) {
-            Log.error("Running program: " + cmd, e);
+            logger.error("Running program: " + cmd, e);
         }
 
         running = false;

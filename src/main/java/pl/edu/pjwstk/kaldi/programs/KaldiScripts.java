@@ -1,10 +1,12 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.files.CTM;
 import pl.edu.pjwstk.kaldi.files.Segmentation;
 import pl.edu.pjwstk.kaldi.files.SegmentationList;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import java.io.File;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class KaldiScripts {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
 
     private static boolean removeTempFiles = Settings.removeTempFile;
 
@@ -203,9 +207,9 @@ public class KaldiScripts {
         KaldiUtils.fstminimizeencoded(Ltemp2_fst, LG_fst);
 
         if (KaldiUtils.fstisstochastic(LG_fst))
-            Log.verbose(LG_fst.getName() + " is stochastic!");
+            logger.trace(LG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(LG_fst.getName() + " is NOT stochastic!");
+            logger.trace(LG_fst.getName() + " is NOT stochastic!");
 
         if (removeTempFiles) {
             Ltemp_fst.delete();
@@ -220,9 +224,9 @@ public class KaldiScripts {
         KaldiUtils.fstcomposecontext(3, 1, disamb_syms_in, disamb_syms_out, ilabels_out, LG_fst, CLG_fst);
 
         if (KaldiUtils.fstisstochastic(CLG_fst))
-            Log.verbose(CLG_fst.getName() + " is stochastic!");
+            logger.trace(CLG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(CLG_fst.getName() + " is NOT stochastic!");
+            logger.trace(CLG_fst.getName() + " is NOT stochastic!");
 
         File h_disamb_syms = new File(lang_dir, "disambig_tid.int");
         File H_fst = new File(lang_dir, "H.fst");
@@ -235,16 +239,16 @@ public class KaldiScripts {
         KaldiUtils.fstminimizeencoded(Ltemp_fst, Ltemp2_fst);
 
         if (KaldiUtils.fstisstochastic(Ltemp2_fst))
-            Log.verbose(Ltemp2_fst.getName() + " is stochastic!");
+            logger.trace(Ltemp2_fst.getName() + " is stochastic!");
         else
-            Log.verbose(Ltemp2_fst.getName() + " is NOT stochastic!");
+            logger.trace(Ltemp2_fst.getName() + " is NOT stochastic!");
 
         KaldiUtils.add_self_loops(0.1f, true, distr_mdl, Ltemp2_fst, HCLG_fst);
 
         if (KaldiUtils.fstisstochastic(HCLG_fst))
-            Log.verbose(HCLG_fst.getName() + " is stochastic!");
+            logger.trace(HCLG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(HCLG_fst.getName() + " is NOT stochastic!");
+            logger.trace(HCLG_fst.getName() + " is NOT stochastic!");
 
         if (removeTempFiles) {
             Ltemp_fst.delete();
@@ -265,9 +269,9 @@ public class KaldiScripts {
         KaldiUtils.fstminimizeencoded(Ltemp2_fst, LG_fst);
 
         if (KaldiUtils.fstisstochastic(LG_fst))
-            Log.verbose(LG_fst.getName() + " is stochastic!");
+            logger.trace(LG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(LG_fst.getName() + " is NOT stochastic!");
+            logger.trace(LG_fst.getName() + " is NOT stochastic!");
 
         if (removeTempFiles) {
             Ltemp_fst.delete();
@@ -282,9 +286,9 @@ public class KaldiScripts {
         KaldiUtils.fstcomposecontext(3, 1, disamb_syms_in, disamb_syms_out, ilabels_out, LG_fst, CLG_fst);
 
         if (KaldiUtils.fstisstochastic(CLG_fst))
-            Log.verbose(CLG_fst.getName() + " is stochastic!");
+            logger.trace(CLG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(CLG_fst.getName() + " is NOT stochastic!");
+            logger.trace(CLG_fst.getName() + " is NOT stochastic!");
 
         File h_disamb_syms = new File(lang_dir, "disambig_tid.int");
         File H_fst = new File(lang_dir, "H.fst");
@@ -297,16 +301,16 @@ public class KaldiScripts {
         KaldiUtils.fstminimizeencoded(Ltemp_fst, Ltemp2_fst);
 
         if (KaldiUtils.fstisstochastic(Ltemp2_fst))
-            Log.verbose(Ltemp2_fst.getName() + " is stochastic!");
+            logger.trace(Ltemp2_fst.getName() + " is stochastic!");
         else
-            Log.verbose(Ltemp2_fst.getName() + " is NOT stochastic!");
+            logger.trace(Ltemp2_fst.getName() + " is NOT stochastic!");
 
         KaldiUtils.add_self_loops(0.1f, true, distr_mdl, Ltemp2_fst, HCLG_fst);
 
         if (KaldiUtils.fstisstochastic(HCLG_fst))
-            Log.verbose(HCLG_fst.getName() + " is stochastic!");
+            logger.trace(HCLG_fst.getName() + " is stochastic!");
         else
-            Log.verbose(HCLG_fst.getName() + " is NOT stochastic!");
+            logger.trace(HCLG_fst.getName() + " is NOT stochastic!");
 
         if (removeTempFiles) {
             Ltemp_fst.delete();

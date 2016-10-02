@@ -1,8 +1,9 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -15,6 +16,8 @@ import java.io.*;
 import java.util.Vector;
 
 public class Praat {
+
+    private final static Logger logger = LoggerFactory.getLogger(Praat.class);
 
     public static class PitchMark {
         public double time;
@@ -44,9 +47,9 @@ public class Praat {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("Running Praat to compute pitch...");
+        logger.trace("Running Praat to compute pitch...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         Vector<PitchMark> ret = new Vector<>();
 

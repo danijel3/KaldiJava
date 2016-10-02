@@ -1,5 +1,7 @@
 package pl.edu.pjwstk.kaldi.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -7,7 +9,6 @@ import pl.edu.pjwstk.kaldi.programs.Java;
 import pl.edu.pjwstk.kaldi.service.database.dbTasks;
 import pl.edu.pjwstk.kaldi.service.database.dbTasks.dbStatus;
 import pl.edu.pjwstk.kaldi.service.tasks.Task;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.ParseOptions;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -25,9 +26,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Locale;
-import java.util.logging.Level;
 
 public class ServiceDaemon {
+
+    private final static Logger logger = LoggerFactory.getLogger(ServiceDaemon.class);
 
     static File settings_file = null;
 
@@ -37,9 +39,6 @@ public class ServiceDaemon {
         try {
 
             Locale.setDefault(Locale.ENGLISH);
-
-            Log.initFile("KaldiServiceDaemon", true);
-            Log.setLevel(Level.INFO);
 
             ParseOptions po = new ParseOptions("Kaldi Service Daemon", "Service daemon for Java.");
 
@@ -51,13 +50,13 @@ public class ServiceDaemon {
                 return;
 
             if (po.getArgument("dump-settings") != null) {
-                Log.info("Dumping settings and exitting.");
+                logger.info("Dumping settings and exitting.");
                 Settings.dumpSettings((File) po.getArgument("dump-settings"));
                 return;
             }
 
             if (po.getArgument("settings") != null) {
-                Log.info("Loading settings...");
+                logger.info("Loading settings...");
                 settings_file = (File) po.getArgument("settings");
                 Settings.loadSettings(settings_file);
             }
@@ -104,13 +103,13 @@ public class ServiceDaemon {
             int slots_used = 0;
             for (dbTasks.Task t : running_tasks) {
                 if (t.pid <= 0 && (now - t.time.getTime()) > Settings.daemon_startup_timer_ms) {
-                    Log.info("Task " + t._id + " never started and is stale!");
+                    logger.info("Task " + t._id + " never started and is stale!");
                     dbTasks.changeStatus(t, dbStatus.dead);
                     continue;
                 }
 
                 if (t.pid > 0 && !checkPIDProc(t.pid)) {
-                    Log.info("Task " + t._id + " died!");
+                    logger.info("Task " + t._id + " died!");
                     dbTasks.changeStatus(t, dbStatus.dead);
                     continue;
                 }
@@ -141,10 +140,10 @@ public class ServiceDaemon {
             String hash = "";
             try {
                 hash = Task.getHash(new File(queued_task.task_file));
-                Log.verbose("Task hash: " + hash);
+                logger.trace("Task hash: " + hash);
             } catch (XPathExpressionException | NoSuchAlgorithmException | SAXException | ParserConfigurationException
                     | IOException | NullPointerException e1) {
-                Log.error("Getting hash", e1);
+                logger.error("Getting hash", e1);
                 dbTasks.changeStatus(queued_task, dbStatus.dead);
                 continue;
             }
@@ -155,7 +154,7 @@ public class ServiceDaemon {
 
             if (copy != null) {
 
-                Log.info("Found cached: " + copy._id);
+                logger.info("Found cached: " + copy._id);
 
                 dbTasks.changeStatus(queued_task, dbStatus.copyof);
                 dbTasks.setCopy(queued_task, copy._id);
@@ -163,7 +162,7 @@ public class ServiceDaemon {
                 continue;
             }
 
-            Log.info("Starting task " + queued_task._id);
+            logger.info("Starting task " + queued_task._id);
             dbTasks.changeStatus(queued_task, dbStatus.running);
 
             try {

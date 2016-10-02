@@ -1,7 +1,9 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -11,6 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Transcriber {
+
+    private final static Logger logger = LoggerFactory.getLogger(Transcriber.class);
+    private final static LogStream logger_stdout = new LogStream(logger);
+    private final static LogStream logger_stderr = new LogStream(logger, "ERR>> ");
 
     private static File transcriber_bin;
     private static File rules;
@@ -59,12 +65,12 @@ public class Transcriber {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("Transcribing...");
+        logger.trace("Transcribing...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         ArrayList<String> dic = new ArrayList<>();
         dic.add("SIL sil");

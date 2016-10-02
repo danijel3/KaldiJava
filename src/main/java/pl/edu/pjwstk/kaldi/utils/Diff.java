@@ -4,10 +4,13 @@ import difflib.Delta;
 import difflib.Delta.TYPE;
 import difflib.DiffUtils;
 import difflib.Patch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.files.Segmentation;
 import pl.edu.pjwstk.kaldi.files.Segmentation.Segment;
 import pl.edu.pjwstk.kaldi.files.Segmentation.Tier;
 import pl.edu.pjwstk.kaldi.files.SegmentationList;
+import pl.edu.pjwstk.kaldi.programs.Julius;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +18,8 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class Diff {
+
+    private final static Logger logger = LoggerFactory.getLogger(Diff.class);
 
     private static int clamp(int val, int min, int max) {
         if (val < min)
@@ -205,9 +210,9 @@ public class Diff {
 
         for (Delta<String> delta : patch.getDeltas()) {
 
-            Log.verbose("" + delta.getType());
-            Log.verbose("o " + delta.getOriginal());
-            Log.verbose("r " + delta.getRevised());
+            logger.trace("" + delta.getType());
+            logger.trace("o " + delta.getOriginal());
+            logger.trace("r " + delta.getRevised());
 
             rev_beg = delta.getRevised().getPosition();
             rev_end = rev_beg + delta.getRevised().size() - 1;
@@ -216,7 +221,7 @@ public class Diff {
 
             if (delta.getType() == TYPE.INSERT) {
                 if (delta.getOriginal().getPosition() == 0 || delta.getOriginal().getPosition() == ref_words.size()) {
-                    Log.verbose("Skipping insertion at start/end!");
+                    logger.trace("Skipping insertion at start/end!");
 
                     for (int i = rev_beg; i <= rev_end; i++)
                         hypsegs.get(i).used = true;

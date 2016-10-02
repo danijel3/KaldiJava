@@ -1,11 +1,12 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.files.CTM;
 import pl.edu.pjwstk.kaldi.files.TextGrid;
 import pl.edu.pjwstk.kaldi.programs.KaldiUtils;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.xpath.XPath;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 
 public class DecodeTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(DecodeTask.class);
 
     private File input_file;
     private File mfcc_config;
@@ -37,12 +40,12 @@ public class DecodeTask extends Task {
                 lda_matrix};
         for (File f : files)
             if (f != null && !f.exists()) {
-                Log.error("Missing file: " + f.getAbsolutePath());
+                logger.error("Missing file: " + f.getAbsolutePath());
                 fail = true;
             }
 
         if (fail) {
-            Log.error("Some files are missing!");
+            logger.error("Some files are missing!");
             state = State.FAILED;
             return;
         }
@@ -114,7 +117,7 @@ public class DecodeTask extends Task {
             state = State.SUCCEEDED;
 
         } catch (Exception e) {
-            Log.error("Decoding task.", e);
+            logger.error("Decoding task.", e);
             state = State.FAILED;
         }
     }

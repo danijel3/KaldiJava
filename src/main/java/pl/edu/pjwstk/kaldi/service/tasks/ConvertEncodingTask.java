@@ -1,8 +1,9 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.programs.FFMPEG;
-import pl.edu.pjwstk.kaldi.utils.Log;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 
 public class ConvertEncodingTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(ConvertEncodingTask.class);
 
     private File input, output;
 
@@ -27,7 +30,7 @@ public class ConvertEncodingTask extends Task {
             state = State.SUCCEEDED;
 
         } catch (RuntimeException e) {
-            Log.error("FFMPEG task.", e);
+            logger.error("FFMPEG task.", e);
             state = State.FAILED;
         }
     }

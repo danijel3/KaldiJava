@@ -1,8 +1,10 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import pl.edu.pjwstk.kaldi.utils.Log;
+import pl.edu.pjwstk.kaldi.KaldiMain;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -18,6 +20,9 @@ import java.util.Vector;
 
 public class Essentia {
 
+    private final static Logger logger = LoggerFactory.getLogger(Essentia.class);
+
+
     public static void pitch(File input, File output) {
 
         String[] cmd = new String[]{
@@ -26,10 +31,10 @@ public class Essentia {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("Calculating Pitch using Essentia: "
+        logger.trace("Calculating Pitch using Essentia: "
                 + input.getAbsolutePath() + " " + output.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static class PitchMark {

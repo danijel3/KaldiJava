@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -11,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class KaldiUtils {
+
+    private final static Logger logger = LoggerFactory.getLogger(KaldiUtils.class);
+    private final static LogStream logger_stdout = new LogStream(logger);
+    private final static LogStream logger_stderr = new LogStream(logger, "ERR>> ");
 
     private static File utils_dir;
     private static File openfst_dir;
@@ -161,7 +167,7 @@ public class KaldiUtils {
                         throw new FileNotFoundException("" + file);
 
                 } catch (IllegalArgumentException | IllegalAccessException e) {
-                    Log.error("Internal error", e);
+                    logger.error("Internal error", e);
                 }
             }
         }
@@ -211,12 +217,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("compute_mfcc_feats: " + scp.getName() + "->" + out.getName());
+        logger.trace("compute_mfcc_feats: " + scp.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -227,12 +233,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("compute_cmvn_stats: " + in.getName() + "->" + out.getName());
+        logger.trace("compute_cmvn_stats: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -243,12 +249,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("apply_cmvn: " + in.getName() + "->" + out.getName());
+        logger.trace("apply_cmvn: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -259,12 +265,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("add_deltas: " + in.getName() + "->" + out.getName());
+        logger.trace("add_deltas: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -275,12 +281,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("splice_feats: " + in.getName() + "->" + out.getName());
+        logger.trace("splice_feats: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -295,12 +301,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("transform_feats: " + in.getName() + "->{" + trans.getName() + "}->" + out.getName());
+        logger.trace("transform_feats: " + in.getName() + "->{" + trans.getName() + "}->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void gmm_decode_faster(File word_symbol_table, File model, File fst, File feat, File out)
@@ -312,12 +318,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_decode_faster: " + feat.getName() + "->" + out.getName());
+        logger.trace("gmm_decode_faster: " + feat.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -340,12 +346,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_latgen_faster: " + feat.getName() + "->" + lattice.getName());
+        logger.trace("gmm_latgen_faster: " + feat.getName() + "->" + lattice.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -362,12 +368,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_align: " + feat.getName() + "->" + alignment.getName());
+        logger.trace("gmm_align: " + feat.getName() + "->" + alignment.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -381,12 +387,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("copy_int_vector: " + in.getName() + "->" + out.getName());
+        logger.trace("copy_int_vector: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -397,12 +403,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_1best: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_1best: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -419,13 +425,13 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_copy: " + input_opts + ":" + input_lattice.getAbsolutePath() + " -> " + output_opts + ":"
+        logger.trace("lattice_copy: " + input_opts + ":" + input_lattice.getAbsolutePath() + " -> " + output_opts + ":"
                 + output_lattice.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -438,12 +444,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_oracle: " + lattice.getName() + "->" + output_lattice.getName());
+        logger.trace("lattice_oracle: " + lattice.getName() + "->" + output_lattice.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -454,12 +460,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_align_words: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_align_words: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -470,12 +476,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("nbest_to_ctm: " + in.getName() + "->" + out.getName());
+        logger.trace("nbest_to_ctm: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -486,12 +492,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_to_ctm_conf: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_to_ctm_conf: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -502,12 +508,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_to_fst: " + in.getName() + "->" + out_txt.getName());
+        logger.trace("lattice_to_fst: " + in.getName() + "->" + out_txt.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -521,9 +527,9 @@ public class KaldiUtils {
         launcher.setLibraries(fstlibs);
         launcher.setStdoutFile(out);
 
-        Log.verbose("show_alignments: " + alignment.getName() + "->" + out.getName());
+        logger.trace("show_alignments: " + alignment.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -534,12 +540,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_to_phone_lattice: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_to_phone_lattice: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -550,12 +556,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("linear_to_nbest: " + alignment.getName() + "->" + nbest.getName());
+        logger.trace("linear_to_nbest: " + alignment.getName() + "->" + nbest.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -566,13 +572,13 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_best_path: " + lat.getName() + "->" + tra.getName());
+        logger.trace("lattice_best_path: " + lat.getName() + "->" + tra.getName());
 
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void lattice_to_post(double acoustic_scale, File in, File out) throws RuntimeException {
@@ -582,12 +588,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_to_post: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_to_post: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -601,12 +607,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("weight_silence_post: " + in.getName() + "->" + out.getName());
+        logger.trace("weight_silence_post: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -619,12 +625,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_post_to_gpost: " + in.getName() + "->" + out.getName());
+        logger.trace("gmm_post_to_gpost: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -666,12 +672,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_est_fmllr_gpost: " + in.getName() + "->" + out.getName());
+        logger.trace("gmm_est_fmllr_gpost: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -686,12 +692,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("lattice_determinize_pruned: " + in.getName() + "->" + out.getName());
+        logger.trace("lattice_determinize_pruned: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -729,12 +735,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_est_fmllr: " + in.getName() + "->" + out.getName());
+        logger.trace("gmm_est_fmllr: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -753,12 +759,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("compose_transforms: " + in_a.getName() + "+" + in_b.getName() + "->" + out.getName());
+        logger.trace("compose_transforms: " + in_a.getName() + "+" + in_b.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -771,12 +777,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("gmm_rescore_lattice: " + in.getName() + "->" + out.getName());
+        logger.trace("gmm_rescore_lattice: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -788,12 +794,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("arpa2fst: " + arpa.getName() + "->" + fst.getName());
+        logger.trace("arpa2fst: " + arpa.getName() + "->" + fst.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -803,12 +809,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstprint: " + fst.getName() + "->" + txt.getName());
+        logger.trace("fstprint: " + fst.getName() + "->" + txt.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstprint(File fst, File txt, File input_symbols, File output_symbols) {
@@ -819,12 +825,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstprint: " + fst.getName() + "->" + txt.getName());
+        logger.trace("fstprint: " + fst.getName() + "->" + txt.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstrandgen(File fst, File rand, int seed) {
@@ -833,12 +839,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstrandgen: " + fst.getName() + "->" + rand.getName());
+        logger.trace("fstrandgen: " + fst.getName() + "->" + rand.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstdraw(File fst, File dot, File isyms, File osyms, boolean acceptor) {
@@ -855,12 +861,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstdraw: " + fst.getName() + "->" + dot.getName());
+        logger.trace("fstdraw: " + fst.getName() + "->" + dot.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstcompose(File fsta, File fstb, File fstout) {
@@ -870,12 +876,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstcompose: " + fsta.getName() + " + " + fstb.getAbsolutePath() + "->" + fstout.getName());
+        logger.trace("fstcompose: " + fsta.getName() + " + " + fstb.getAbsolutePath() + "->" + fstout.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void eps2disambig(File fst_in, File fst_out) throws FileNotFoundException {
@@ -885,10 +891,10 @@ public class KaldiUtils {
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutFile(fst_out);
 
-        Log.verbose("eps2disambig: " + fst_in.getName() + "->" + fst_out.getName());
-        Log.verbose("<SUPRESSING OUTPUT>");
+        logger.trace("eps2disambig: " + fst_in.getName() + "->" + fst_out.getName());
+        logger.trace("<SUPRESSING OUTPUT>");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -899,9 +905,9 @@ public class KaldiUtils {
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutFile(fst_out);
 
-        Log.verbose("s2eps: " + fst_in.getName() + "->" + fst_out.getName());
+        logger.trace("s2eps: " + fst_in.getName() + "->" + fst_out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void int2sym(String field, File string_table, File in, File out) throws FileNotFoundException {
@@ -911,9 +917,9 @@ public class KaldiUtils {
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutFile(out);
 
-        Log.verbose("int2sym: " + in.getName() + "->" + out.getName());
+        logger.trace("int2sym: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void sym2int(String field, File string_table, File in, File out) throws FileNotFoundException {
@@ -922,11 +928,11 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutFile(out);
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("sym2int: " + in.getName() + "->" + out.getName());
+        logger.trace("sym2int: " + in.getName() + "->" + out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstcompile(File isymbols, File osymbols, boolean keep_isymbols, boolean keep_osymbols,
@@ -945,12 +951,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstcompile: " + fst_in.getName() + "->" + fst_out.getName());
+        logger.trace("fstcompile: " + fst_in.getName() + "->" + fst_out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstarcsort(String sort_type, File fst_in, File fst_out) {
@@ -959,12 +965,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstarcsort: " + fst_in.getName() + "->" + fst_out.getName());
+        logger.trace("fstarcsort: " + fst_in.getName() + "->" + fst_out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstaddselfloops(File in_disambig_list, File out_disambig_list, File fst_in, File fst_out) {
@@ -974,12 +980,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstaddselfloops: " + fst_in.getName() + "->" + fst_out.getName());
+        logger.trace("fstaddselfloops: " + fst_in.getName() + "->" + fst_out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
 
@@ -991,12 +997,12 @@ public class KaldiUtils {
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
         launcher.setCwd(utils_dir.getParentFile());
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("prepareLexicon...");
+        logger.trace("prepareLexicon...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static int add_lex_disambig(boolean sil_probs, boolean pron_probs, File lex_in, File lex_out) {
@@ -1016,11 +1022,11 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutStream(ostr);
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("add_lex_disambig: " + lex_in.getName() + " -> " + lex_out.getName());
+        logger.trace("add_lex_disambig: " + lex_in.getName() + " -> " + lex_out.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         String ret = new String(ostr.toByteArray()).trim();
         return Integer.parseInt(ret);
@@ -1042,11 +1048,11 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setStdoutFile(fst);
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("make_lexicon_fst: " + lex.getName() + " -> " + fst.getName());
+        logger.trace("make_lexicon_fst: " + lex.getName() + " -> " + fst.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fsttablecompose(File fst_one, File fst_two, File fst_out) {
@@ -1055,13 +1061,13 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose(
+        logger.trace(
                 "fsttablecompose: " + fst_one.getName() + "+" + fst_two.getName() + "=" + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstdeterminizestar(File fst_in, File fst_out, boolean use_log) {
@@ -1075,12 +1081,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstdeterminizestar: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstdeterminizestar: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstminimizeencoded(File fst_in, File fst_out) {
@@ -1089,12 +1095,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstminimizeencoded: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstminimizeencoded: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static boolean fstisstochastic(File fst) {
@@ -1103,12 +1109,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstisstochastic: " + fst.getName() + "...");
+        logger.trace("fstisstochastic: " + fst.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         return launcher.getReturnValue() == 0;
     }
@@ -1123,12 +1129,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstcomposecontext: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstcomposecontext: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void make_h_transducer(File disamb_syms_out, float trans_scale, File ilabels, File tree, File mdl_in,
@@ -1141,12 +1147,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("make_h_transducer: " + fst_out.getName() + "...");
+        logger.trace("make_h_transducer: " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstrmsymbols(File syms, File fst_in, File fst_out) {
@@ -1156,12 +1162,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstrmsymbols: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstrmsymbols: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstrmepslocal(File fst_in, File fst_out) {
@@ -1171,12 +1177,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstrmsymbols: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstrmsymbols: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void fstrmepsilon(File fst_in, File fst_out) {
@@ -1186,12 +1192,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("fstrmepsilon: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("fstrmepsilon: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 
     public static void add_self_loops(float loop_scale, boolean reorder, File mdl_in, File fst_in, File fst_out)
@@ -1207,12 +1213,12 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("add_self_loops: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
+        logger.trace("add_self_loops: " + fst_in.getName() + " -> " + fst_out.getName() + "...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -1242,11 +1248,11 @@ public class KaldiUtils {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
         launcher.setLibraries(fstlibs);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("online_wav_gmm_decode_faster...");
+        logger.trace("online_wav_gmm_decode_faster...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 }

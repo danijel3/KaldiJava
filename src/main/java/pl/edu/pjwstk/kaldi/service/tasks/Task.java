@@ -1,10 +1,11 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,6 +24,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public abstract class Task implements Runnable {
+
+    private final static Logger logger = LoggerFactory.getLogger(Task.class);
 
     public enum State {
         INITIALIZED, RUNNING, FAILED, SUCCEEDED
@@ -64,7 +67,7 @@ public abstract class Task implements Runnable {
             return new KeywordSpottingTask();
         }
 
-        Log.error("Unknown task: " + name);
+        logger.error("Unknown task: " + name);
         return null;
     }
 

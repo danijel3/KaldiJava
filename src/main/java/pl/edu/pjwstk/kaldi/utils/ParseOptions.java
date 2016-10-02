@@ -174,9 +174,9 @@ public class ParseOptions {
     /**
      * Add un-named main argument.
      *
-     * @param type          type of argument; example: String.class
-     * @param name          name of argument for the help
-     * @param description   description of the arguemnt for the help
+     * @param type        type of argument; example: String.class
+     * @param name        name of argument for the help
+     * @param description description of the arguemnt for the help
      */
     public void addArgument(Class<?> type, String name, String description) {
         arg_list.add(new Argument(type, name, description, null));

@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import java.io.File;
@@ -24,6 +25,8 @@ import fr.lium.spkDiarization.tools.SAdjSeg;
  */
 
 public class Lium {
+
+    private final static Logger logger = LoggerFactory.getLogger(Lium.class);
 
     private static File gender_model = new File(Settings.lium_models,
             "gender.gmms");
@@ -51,7 +54,7 @@ public class Lium {
 
         throw new RuntimeException("LIUM is disabled in this version!");
 
-		/*
+        /*
         File uem = new File(Settings.curr_task_dir, "show.uem.seg");
 		File iseg = new File(Settings.curr_task_dir, "show.i.seg");
 		// File pmsseg = new File(Settings.curr_task_dir, "show.pms.seg");
@@ -72,7 +75,7 @@ public class Lium {
 
 		try {
 
-			Log.info("Running LIUM...");
+			logger.info("Running LIUM...");
 
 			PrintWriter writer = new PrintWriter(uem);
 			writer.println("show 2 0 1000000000 U U U 1");
@@ -195,7 +198,7 @@ public class Lium {
 					"--tInputMask=" + ubm_model.getAbsolutePath(),
 					"--tOutputMask=" + cgmm.getAbsolutePath(), "show" });
 
-			Log.info("Saving TextGrid...");
+			logger.info("Saving TextGrid...");
 
 			TextGrid textgrid = new TextGrid();
 
@@ -225,10 +228,10 @@ public class Lium {
 
 			textgrid.write(gridfile);
 
-			Log.info("Done LIUM!");
+			logger.info("Done LIUM!");
 
 		} catch (Exception e) {
-			Log.error("LIUM diarization", e);
+			logger.error("LIUM diarization", e);
 		}
 		*/
     }
@@ -238,8 +241,6 @@ public class Lium {
         try {
 
             Locale.setDefault(Locale.ENGLISH);
-
-            Log.init("KaldiJava", true);
 
             Settings.curr_task_dir = new File("/home/guest/Desktop/tmp/");
 

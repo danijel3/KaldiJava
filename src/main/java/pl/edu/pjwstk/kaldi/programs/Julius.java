@@ -1,10 +1,12 @@
 package pl.edu.pjwstk.kaldi.programs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.files.Segmentation;
 import pl.edu.pjwstk.kaldi.files.TextGrid;
 import pl.edu.pjwstk.kaldi.files.julius.JuliusOutput;
 import pl.edu.pjwstk.kaldi.utils.FileUtils;
-import pl.edu.pjwstk.kaldi.utils.Log;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -15,6 +17,11 @@ import java.util.Locale;
 import java.util.Vector;
 
 public class Julius {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
+    private final static LogStream logger_stdout=new LogStream(logger);
+    private final static LogStream logger_stderr=new LogStream(logger,"ERR>> ");
+
 
     public static void test() throws FileNotFoundException {
         if (!Settings.julius_bin.exists())
@@ -30,12 +37,12 @@ public class Julius {
                 filelist.getAbsolutePath(), "-v", dic.getAbsolutePath(), "-d", binlm.getAbsolutePath()};
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("julius: " + filelist.getName());
+        logger.trace("julius: " + filelist.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -46,12 +53,12 @@ public class Julius {
                 binlm.getAbsolutePath()};
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("mkbingram: " + model_bkwd.getName() + " -> " + binlm.getName());
+        logger.trace("mkbingram: " + model_bkwd.getName() + " -> " + binlm.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -80,10 +87,10 @@ public class Julius {
         Transcriber.transcribe(vocab, Settings.default_encoding, dict, Settings.default_encoding, true);
         FileUtils.makeSCPFile(scp, files, false);
 
-        Log.verbose("Running julius...");
+        logger.trace("Running julius...");
         julius(conf, scp, dict, binlm);
 
-        Log.verbose("Parsing julius output...");
+        logger.trace("Parsing julius output...");
         String soundname = sound.getAbsolutePath();
         soundname = soundname.substring(0, soundname.lastIndexOf('.'));
         File outfile = new File(soundname + ".out");
@@ -114,8 +121,6 @@ public class Julius {
 
             Locale.setDefault(Locale.ENGLISH);
 
-            Log.init("JuliusUnitTest", false);
-
             Transcriber.init();
             Transcriber.test();
 
@@ -126,7 +131,7 @@ public class Julius {
 
             grid.write(new File("/home/guest/Desktop/Respeaking/test/out.TextGrid"));
 
-            Log.info("Julius Test complete!");
+            logger.info("Julius Test complete!");
 
         } catch (Exception e) {
             e.printStackTrace();

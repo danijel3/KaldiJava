@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 public class Database {
-
+    
     private static Connection conn = null;
 
     private static Properties db_props = new Properties();

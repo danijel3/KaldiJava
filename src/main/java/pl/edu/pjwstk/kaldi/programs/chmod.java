@@ -1,11 +1,16 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.KaldiMain;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 
 import java.io.File;
 
 public class chmod {
+
+    private final static Logger logger = LoggerFactory.getLogger(chmod.class);
+
 
     public static void run(String mode, File file) {
 
@@ -13,8 +18,8 @@ public class chmod {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("chmod: " + mode + " " + file.getAbsolutePath());
+        logger.trace("chmod: " + mode + " " + file.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
     }
 }

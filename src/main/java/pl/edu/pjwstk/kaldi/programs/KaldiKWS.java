@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -10,6 +11,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class KaldiKWS {
+
+    private final static Logger logger = LoggerFactory.getLogger(KaldiKWS.class);
 
     public static void test() throws FileNotFoundException {
         if (!Settings.kaldi_kws_bin.exists())
@@ -23,9 +26,9 @@ public class KaldiKWS {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        Log.verbose("KWS generating vocab: " + lattice.getAbsolutePath() + " -> " + vocab.getAbsolutePath());
+        logger.trace("KWS generating vocab: " + lattice.getAbsolutePath() + " -> " + vocab.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -38,18 +41,16 @@ public class KaldiKWS {
 
         launcher.setStdoutFile(out);
 
-        Log.verbose("KWS detecting keywords: " + lattice.getAbsolutePath() + " + " + keywords.getAbsolutePath() + " + "
+        logger.trace("KWS detecting keywords: " + lattice.getAbsolutePath() + " + " + keywords.getAbsolutePath() + " + "
                 + dict.getAbsolutePath() + " -> " + out.getAbsolutePath());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
     public static void main(String[] args) {
         try {
             Locale.setDefault(Locale.ENGLISH);
-
-            Log.init("debug", true);
 
             get_vocab(new File("/home/guest/Desktop/lucas_kws/paris/130514_NWSU_120A0_O.txt"),
                     new File("/home/guest/Desktop/lucas_kws/paris/vocab.txt"));

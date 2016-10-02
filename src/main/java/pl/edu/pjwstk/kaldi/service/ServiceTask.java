@@ -1,10 +1,11 @@
 package pl.edu.pjwstk.kaldi.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.programs.*;
 import pl.edu.pjwstk.kaldi.service.database.dbTasks;
 import pl.edu.pjwstk.kaldi.service.database.dbTasks.dbStatus;
 import pl.edu.pjwstk.kaldi.service.tasks.Task;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.ParseOptions;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class ServiceTask {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
 
     public static void main(String[] args) {
 
@@ -66,8 +69,6 @@ public class ServiceTask {
             Settings.temp_dir = new File(Settings.curr_task_dir, "tmp");
             Settings.temp_dir2 = new File(Settings.curr_task_dir, "tmp2");
 
-            Log.initFile("KaldiTask", true);
-
             KaldiUtils.init();
             KaldiUtils.test();
             KaldiScripts.init(Settings.curr_task_dir);
@@ -83,7 +84,7 @@ public class ServiceTask {
             dbTasks.changeStatus(db_task, dbStatus.done);
 
         } catch (Exception e) {
-            Log.error("Main.", e);
+            logger.error("Main.", e);
             if (db_task != null)
                 dbTasks.changeStatus(db_task, dbStatus.dead);
         }

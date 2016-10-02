@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.kaldi.files.julius;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.KaldiMain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +10,8 @@ import java.util.Stack;
 import java.util.Vector;
 
 public class WordGraph {
+
+    private final static Logger logger = LoggerFactory.getLogger(WordGraph.class);
 
     public Map<Integer, LatticeNode> lattice;
     public Map<Object, LatticeNode> nodes;
@@ -43,7 +47,7 @@ public class WordGraph {
         if (found.size() == 1)
             return found.get(0);
 
-        Log.info("WARNING: found more than 1 first node! Returning one with highest score...");
+        logger.info("WARNING: found more than 1 first node! Returning one with highest score...");
 
         double score = -999999999;
         LatticeNode ret = found.get(0);
@@ -166,7 +170,7 @@ public class WordGraph {
         int best_score = 999999999;
         Hypo ret = null;
 
-        Log.info("Hypo num: " + found_hypos.size());
+        logger.info("Hypo num: " + found_hypos.size());
 
         for (Hypo h : found_hypos) {
             h.words.updateLevenshtein();

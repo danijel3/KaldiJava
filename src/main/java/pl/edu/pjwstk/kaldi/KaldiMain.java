@@ -1,5 +1,7 @@
 package pl.edu.pjwstk.kaldi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.edu.pjwstk.kaldi.files.EAF;
 import pl.edu.pjwstk.kaldi.files.LAB;
 import pl.edu.pjwstk.kaldi.files.Segmentation;
@@ -14,21 +16,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
-import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 public class KaldiMain {
+
+    private final static Logger logger = LoggerFactory.getLogger(KaldiMain.class);
 
     public static void main(String[] args) {
 
         try {
 
             Locale.setDefault(Locale.ENGLISH);
-
-            Log.init("KaldiJava", false);
-
-            // Log.setLevel(Level.INFO);
-            Log.setLevel(Level.ALL);
 
             ParseOptions po = new ParseOptions("KaldiJava", "Scripts for KLADI written in JAVA.");
 
@@ -52,13 +50,13 @@ public class KaldiMain {
             po.printOptions();
 
             if (po.getArgument("dump-settings") != null) {
-                Log.info("Dumping settings and exitting.");
+                logger.info("Dumping settings and exitting.");
                 Settings.dumpSettings((File) po.getArgument("dump-settings"));
                 return;
             }
 
             if (po.getArgument("settings") != null) {
-                Log.info("Loading settings...");
+                logger.info("Loading settings...");
                 Settings.loadSettings((File) po.getArgument("settings"));
             }
 
@@ -76,7 +74,7 @@ public class KaldiMain {
                 Transcriber.test();
                 NGram.test_srilm();
 
-                Log.info("Processing ELAN file...");
+                logger.info("Processing ELAN file...");
 
                 File input_wav = (File) po.getArgument(0);
                 File input_eaf = (File) po.getArgument("trans");
@@ -93,7 +91,7 @@ public class KaldiMain {
 
                     if (seg.name.split(" ").length < 2) {
                         // TODO
-                        Log.warn("one segment");
+                        logger.warn("one segment");
                         continue;
                     }
 
@@ -118,13 +116,13 @@ public class KaldiMain {
                 }
 
                 if (textgrid != null) {
-                    Log.info("Saving " + textgrid.getName());
+                    logger.info("Saving " + textgrid.getName());
                     TextGrid tg = new TextGrid(final_segmentation);
                     tg.write(textgrid);
                 }
 
                 if (labfile != null) {
-                    Log.info("Saving " + labfile.getName());
+                    logger.info("Saving " + labfile.getName());
                     LAB lab = new LAB(final_segmentation.tiers.get(0));
                     lab.write(labfile);
                 }
@@ -151,20 +149,20 @@ public class KaldiMain {
                         File textgrid = new File(align_dir, name + ".TextGrid");
                         File labfile = new File(align_dir, name + ".lab");
 
-                        Log.info("Aligning file: " + file.getAbsolutePath());
+                        logger.info("Aligning file: " + file.getAbsolutePath());
 
                         if (labfile.exists() && textgrid.exists()) {
-                            Log.warn("File seems already aligned! Skipping...");
+                            logger.warn("File seems already aligned! Skipping...");
                             continue;
                         }
 
                         if (!input_wav.canRead()) {
-                            Log.warn("Cannot read file " + input_wav.getName() + "! Skipping...");
+                            logger.warn("Cannot read file " + input_wav.getName() + "! Skipping...");
                             continue;
                         }
 
                         if (!input_txt.canRead()) {
-                            Log.warn("Cannot read file " + input_txt.getName() + "! Skipping...");
+                            logger.warn("Cannot read file " + input_txt.getName() + "! Skipping...");
                             continue;
                         }
 
@@ -174,7 +172,7 @@ public class KaldiMain {
                             else
                                 alignFile(input_wav, input_txt, textgrid, labfile);
                         } catch (Exception e) {
-                            Log.error("Exception processing " + input_wav.getName() + "!", e);
+                            logger.error("Exception processing " + input_wav.getName() + "!", e);
                         }
 
                     }
@@ -190,7 +188,7 @@ public class KaldiMain {
                 Transcriber.test();
                 NGram.test_srilm();
 
-                Log.info("Starting alignment...");
+                logger.info("Starting alignment...");
 
                 File input_wav = (File) po.getArgument(0);
                 File input_txt = (File) po.getArgument("trans");
@@ -209,15 +207,15 @@ public class KaldiMain {
                 diarize(input_wav);
 
             } else
-                Log.error("Don't know what to do");
+                logger.error("Don't know what to do");
 
         } catch (FileNotFoundException fne) {
-            Log.error("Cannot find a file needed by this program: " + fne.getMessage());
+            logger.error("Cannot find a file needed by this program: " + fne.getMessage());
         } catch (Exception e) {
-            Log.error("Main error", e);
+            logger.error("Main error", e);
         }
 
-        Log.info("Program finished!");
+        logger.info("Program finished!");
     }
 
     public static void diarize(File input_wav) throws FileNotFoundException {
@@ -242,7 +240,7 @@ public class KaldiMain {
 
         Segmentation segmentation;
 
-        Log.info("Starting forced alignment...");
+        logger.info("Starting forced alignment...");
 
         KaldiScripts.makeL(input_txt);
         segmentation = KaldiScripts.align(input_wav, input_txt, false);
@@ -251,16 +249,16 @@ public class KaldiMain {
             seg.name = fixPhSegment(seg.name);
         }
 
-        Log.info("Saving segmentation...");
+        logger.info("Saving segmentation...");
         if (textgrid != null) {
             TextGrid outgrid = new TextGrid(segmentation);
-            Log.info("Saving " + textgrid.getName());
+            logger.info("Saving " + textgrid.getName());
             outgrid.write(textgrid);
         }
 
         if (labfile != null) {
             LAB lab = new LAB(segmentation.tiers.get(1));
-            Log.info("Saving " + labfile.getName());
+            logger.info("Saving " + labfile.getName());
             lab.write(labfile);
         }
 
@@ -291,7 +289,7 @@ public class KaldiMain {
             throw new RuntimeException("Recursion depth too large...");
         }
 
-        Log.info("Starting decoding process...");
+        logger.info("Starting decoding process...");
 
         KaldiScripts.makeHCLG(input_txt);
         segmentation = KaldiScripts.decode(input_wav, false);
@@ -307,7 +305,7 @@ public class KaldiMain {
 
         String ref = FileUtils.readFile(input_txt, " ");
 
-        Log.info("Comparing decoding output to ref...");
+        logger.info("Comparing decoding output to ref...");
 
         Segmentation fix_seg = Diff.diff(segmentation, ref, file_len);
 
@@ -327,9 +325,9 @@ public class KaldiMain {
         File temp_wav = File.createTempFile("seg", ".wav", Settings.temp_dir2);
         File temp_txt = File.createTempFile("seg", ".txt", Settings.temp_dir2);
 
-        Log.info("Adding correctly recognized segments...");
+        logger.info("Adding correctly recognized segments...");
         if (fix_seg.tiers.size() < 3) {
-            Log.warn("Diff segmentation incorrect!");
+            logger.warn("Diff segmentation incorrect!");
             return outgrid;
         } else {
             for (Segment seg : fix_seg.tiers.get(1).segments)
@@ -339,14 +337,14 @@ public class KaldiMain {
                 outgrid.addSegment(ph_tier, seg.start_time, seg.end_time, fixPhSegment(seg.name), seg.confidence);
         }
 
-        Log.info("Re-aligning mismatched segments...");
+        logger.info("Re-aligning mismatched segments...");
 
         for (Segment seg : fix_seg.tiers.get(0).segments) {
 
-            Log.info("Aligning: " + seg.name + "(" + seg.start_time + "," + seg.end_time + ")");
+            logger.info("Aligning: " + seg.name + "(" + seg.start_time + "," + seg.end_time + ")");
 
             if (seg.name.trim().length() == 0) {
-                Log.warn("Empty segment! " + seg.start_time + " to " + seg.end_time);
+                logger.warn("Empty segment! " + seg.start_time + " to " + seg.end_time);
                 continue;
             }
 
@@ -364,8 +362,8 @@ public class KaldiMain {
 
             } catch (Exception e) {
 
-                Log.warn("Exc: " + e);
-                Log.warn("Failed to force align segment: " + seg.name + "(" + temp_wav.getName() + ")");
+                logger.warn("Exc: " + e);
+                logger.warn("Failed to force align segment: " + seg.name + "(" + temp_wav.getName() + ")");
 
                 try {
 
@@ -373,9 +371,9 @@ public class KaldiMain {
 
                 } catch (Exception e1) {
 
-                    Log.warn("Exc: " + e1);
-                    Log.warn("Failed to re-align segment: " + seg.name);
-                    Log.warn("Abandoning!");
+                    logger.warn("Exc: " + e1);
+                    logger.warn("Failed to re-align segment: " + seg.name);
+                    logger.warn("Abandoning!");
                     continue;
                 }
             }
@@ -390,16 +388,16 @@ public class KaldiMain {
 
         }
 
-        Log.info("Saving segmentation...");
+        logger.info("Saving segmentation...");
         outgrid.sort();
         if (textgrid != null) {
-            Log.info("Saving " + textgrid.getName());
+            logger.info("Saving " + textgrid.getName());
             outgrid.write(textgrid);
         }
 
         if (labfile != null && !outgrid.tiers.isEmpty()) {
             LAB lab = new LAB(outgrid.tiers.get(0));
-            Log.info("Saving " + labfile.getName());
+            logger.info("Saving " + labfile.getName());
             lab.write(labfile);
         }
 

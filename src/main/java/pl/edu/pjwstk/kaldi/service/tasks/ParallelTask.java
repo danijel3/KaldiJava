@@ -1,8 +1,9 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import pl.edu.pjwstk.kaldi.utils.Log;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -14,6 +15,8 @@ import java.util.List;
 
 public class ParallelTask extends Task {
 
+    private final static Logger logger = LoggerFactory.getLogger(ParallelTask.class);
+
     private List<Task> tasks = new LinkedList<>();
 
     @Override
@@ -21,7 +24,7 @@ public class ParallelTask extends Task {
 
         state = State.RUNNING;
 
-        Log.info("Parallel task starting tasks in parallel...");
+        logger.info("Parallel task starting tasks in parallel...");
         List<Thread> threads = new LinkedList<>();
         for (Task task : tasks) {
             Thread th = new Thread(task);
@@ -29,7 +32,7 @@ public class ParallelTask extends Task {
             threads.add(th);
         }
 
-        Log.info("Parallel task waiting for tasks to finish...");
+        logger.info("Parallel task waiting for tasks to finish...");
 
         for (Thread th : threads) {
             try {
@@ -39,18 +42,18 @@ public class ParallelTask extends Task {
             }
         }
 
-        Log.info("All parallel tasks finished!");
+        logger.info("All parallel tasks finished!");
 
         for (Task task : tasks) {
             if (task.state != State.SUCCEEDED) {
-                Log.info("A parallel task was not succesfull!");
+                logger.info("A parallel task was not succesfull!");
                 state = State.FAILED;
                 return;
             }
         }
 
         state = State.SUCCEEDED;
-        Log.info("Parallel task succesful!");
+        logger.info("Parallel task succesful!");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -10,6 +12,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public class Shout {
+
+    private final static Logger logger = LoggerFactory.getLogger(Shout.class);
+    private final static LogStream logger_stdout = new LogStream(logger);
+    private final static LogStream logger_stderr = new LogStream(logger, "ERR>> ");
 
     private static File shout_segment = new File(Settings.shout_dir,
             "shout_segment");
@@ -32,7 +38,7 @@ public class Shout {
                         throw new FileNotFoundException("" + file);
 
                 } catch (IllegalArgumentException | IllegalAccessException e) {
-                    Log.error("Internal error", e);
+                    logger.error("Internal error", e);
                 }
             }
         }
@@ -46,13 +52,13 @@ public class Shout {
                 seg_model.getAbsolutePath(), "-mo", out_mo.getAbsolutePath()};
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("shout_segment: " + audio_file.getName() + "->"
-                + out_mo.getName());
+                logger.trace("shout_segment: " + audio_file.getName() + "->"
+                        + out_mo.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());
@@ -76,13 +82,13 @@ public class Shout {
         }
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("shout_cluster: " + audio_file.getName() + "->"
+        logger.trace("shout_cluster: " + audio_file.getName() + "->"
                 + out_mo.getName());
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
         if (launcher.getReturnValue() != 0)
             throw new RuntimeException("Retval: " + launcher.getReturnValue());

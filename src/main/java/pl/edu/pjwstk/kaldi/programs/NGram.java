@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.kaldi.programs;
 
-import pl.edu.pjwstk.kaldi.utils.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.edu.pjwstk.kaldi.utils.LogStream;
 import pl.edu.pjwstk.kaldi.utils.ProgramLauncher;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
@@ -8,6 +10,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class NGram {
+
+    private final static Logger logger = LoggerFactory.getLogger(NGram.class);
+    private final static LogStream logger_stdout = new LogStream(logger);
+    private final static LogStream logger_stderr = new LogStream(logger, "ERR>> ");
 
     public static void test_mitlm() throws FileNotFoundException {
         if (!Settings.estimate_ngram_bin.exists())
@@ -28,12 +34,12 @@ public class NGram {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("Estimating N-Gram (MITLM)...");
+        logger.trace("Estimating N-Gram (MITLM)...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 
@@ -45,12 +51,12 @@ public class NGram {
 
         ProgramLauncher launcher = new ProgramLauncher(cmd);
 
-        launcher.setStdoutStream(new Log.Stream());
-        launcher.setStderrStream(new Log.Stream("ERR>>"));
+        launcher.setStdoutStream(logger_stdout);
+        launcher.setStderrStream(logger_stderr);
 
-        Log.verbose("Estimating N-Gram (SRILM)...");
+        logger.trace("Estimating N-Gram (SRILM)...");
         launcher.run();
-        Log.verbose("Done.");
+        logger.trace("Done.");
 
     }
 

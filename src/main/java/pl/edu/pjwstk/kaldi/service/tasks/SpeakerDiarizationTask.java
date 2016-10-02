@@ -1,8 +1,9 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.programs.*;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.xpath.XPath;
@@ -15,6 +16,8 @@ import java.security.MessageDigest;
 import java.util.Locale;
 
 public class SpeakerDiarizationTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(Julius.class);
 
     private enum Method {
         shout, lium
@@ -31,7 +34,7 @@ public class SpeakerDiarizationTask extends Task {
         state = State.RUNNING;
 
         if (!input_file.canRead()) {
-            Log.error("File cannot be read: " + input_file.getAbsolutePath());
+            logger.error("File cannot be read: " + input_file.getAbsolutePath());
             state = State.FAILED;
             return;
         }
@@ -46,15 +49,15 @@ public class SpeakerDiarizationTask extends Task {
                     lium();
                     break;
                 default:
-                    Log.info("Speaker diarization method not implemented!");
-                    Log.info("Method: " + method.toString());
+                    logger.info("Speaker diarization method not implemented!");
+                    logger.info("Method: " + method.toString());
                     break;
             }
 
             state = State.SUCCEEDED;
 
         } catch (RuntimeException | FileNotFoundException e) {
-            Log.error("Speaker diarization task.", e);
+            logger.error("Speaker diarization task.", e);
             state = State.FAILED;
         }
     }
@@ -120,8 +123,6 @@ public class SpeakerDiarizationTask extends Task {
 
             Locale.setDefault(Locale.ENGLISH);
 
-            Log.init("SpeakerDiarizationUnitTest", true);
-
             KaldiUtils.init();
             KaldiUtils.test();
             KaldiScripts.init();
@@ -142,7 +143,7 @@ public class SpeakerDiarizationTask extends Task {
             task.run();
 
         } catch (Exception e) {
-            Log.error("Error running task.", e);
+            logger.error("Error running task.", e);
         }
     }
 

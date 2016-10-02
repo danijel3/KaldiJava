@@ -1,5 +1,8 @@
 package pl.edu.pjwstk.kaldi.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +13,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public class Settings {
+
+    private final static Logger logger = LoggerFactory.getLogger(Settings.class);
 
     /**************************************************************************************************************************/
 
@@ -323,7 +328,7 @@ public class Settings {
 
         Field[] fields = Settings.class.getFields();
 
-        Log.info("Settings dump:");
+        logger.info("Settings dump:");
 
         for (Field field : fields) {
 
@@ -331,7 +336,7 @@ public class Settings {
                 continue;
 
             if (field.getAnnotation(Hidden.class) != null) {
-                Log.info(field.getName() + " = <hidden>");
+                logger.info(field.getName() + " = <hidden>");
             } else {
                 try {
                     if (field.getType().isArray()) {
@@ -345,11 +350,11 @@ public class Settings {
                                 buf.append(",");
                         }
                         buf.append("}");
-                        Log.info(field.getName() + " = " + buf);
+                        logger.info(field.getName() + " = " + buf);
                     } else
-                        Log.info(field.getName() + " = " + field.get(null));
+                        logger.info(field.getName() + " = " + field.get(null));
                 } catch (IllegalArgumentException | IllegalAccessException e) {
-                    Log.info(field.getName() + " = <cannot access>");
+                    logger.info(field.getName() + " = <cannot access>");
                 }
             }
         }

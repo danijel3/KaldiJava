@@ -1,8 +1,9 @@
 package pl.edu.pjwstk.kaldi.service.tasks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import pl.edu.pjwstk.kaldi.programs.Python;
-import pl.edu.pjwstk.kaldi.utils.Log;
 import pl.edu.pjwstk.kaldi.utils.Settings;
 
 import javax.xml.xpath.XPath;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 
 public class NSERTask extends Task {
+
+    private final static Logger logger = LoggerFactory.getLogger(NSERTask.class);
 
     File input_file;
 
@@ -34,7 +37,7 @@ public class NSERTask extends Task {
                 output_file.getAbsolutePath()};
 
         state = State.RUNNING;
-        Log.info("Starting test task...");
+        logger.info("Starting test task...");
 
         Python.run(script, args);
 
@@ -42,7 +45,7 @@ public class NSERTask extends Task {
             state = State.FAILED;
         else
             state = State.SUCCEEDED;
-        Log.info("Completed!");
+        logger.info("Completed!");
 
     }
 
